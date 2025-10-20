@@ -9,8 +9,3 @@ def cadastrar_aluno(nome_aluno, status, qtd_aulas, pagamento_dia, nivel):
         "Data Pagamento: " : pagamento_dia,
         "Nível: " : nivel,
     }
-
-    meus_alunos = {
-        "AlunoRS" : nome_aluno
-    }
-

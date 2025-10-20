@@ -4,6 +4,8 @@ import datetime
 def main_menu():
     Check = False
 
+    meus_alunos = []
+
     hoje = datetime.datetime.now()
 
     print("\n__ MENU PRINCIPAL __\n")
@@ -29,13 +31,18 @@ def main_menu():
                 data_do_pagamento = str(input("Informe a data do pagamento: "))
                 nivel_do_aluno = str(input("Informe o nome do aluno: "))
 
-                cadastrar_aluno
+                sf.cadastrar_aluno(nome_do_aluno, status_do_aluno, data_do_pagamento, nivel_do_aluno)
+
+                meus_alunos.append(nome_do_aluno)
+
+            elif option == 2:
+                for x in meus_alunos:
+                    print(x)
 
             else:
-                print(f"Caractere {option} inválido.")
+                print(f"A {option} não exite.")
         except:
             print(f"Caractere provavelmente não é inteiro.")
             Check = False
     
-
 main_menu()
