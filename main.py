@@ -29,7 +29,7 @@ def main_menu():
                 else:
                     status_do_aluno == "UNKNOWN"
                 data_do_pagamento = str(input("Informe a data do pagamento: "))
-                nivel_do_aluno = str(input("Informe o nome do aluno: "))
+                nivel_do_aluno = str(input("Informe o nível do aluno: "))
 
                 sf.cadastrar_aluno(nome_do_aluno, status_do_aluno, data_do_pagamento, nivel_do_aluno)
 
@@ -38,6 +38,9 @@ def main_menu():
             elif option == 2:
                 for x in meus_alunos:
                     print(x)
+
+            elif option == 3:
+                break
 
             else:
                 print(f"A {option} não exite.")
