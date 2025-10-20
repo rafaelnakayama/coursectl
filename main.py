@@ -12,10 +12,17 @@ def main_menu():
         try:
             option = int(input("\nSelecione uma das opcoes Acima: "))
 
-            if option >= 1 and option <= 3:
-                print(f"Opção {option} selecionada.")
-                Check = True
-            
+            if option == 1:
+                nome_do_aluno = str(input("Informe o nome do aluno: "))
+                status_do_aluno = str(input("Este aluno está tendo aulas? (S/N): ")).upper()
+                if status_do_aluno == "S":
+                    status_do_aluno == "Ativo"
+                elif status_do_aluno == "N":
+                    status_do_aluno == "Deligado"
+                else:
+                    status_do_aluno == "UNKNOWN"
+                
+
             else:
                 print(f"Caractere {option} inválido.")
         except:
