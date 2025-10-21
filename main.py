@@ -41,11 +41,11 @@ def main_menu():
                 # novo_aluno = sf.cadastrar_aluno(nome_do_aluno, status_do_aluno, aulas_assistidas, data_do_pagamento, nivel_do_aluno)
 
                 with open("students.csv", "a", newline='') as arquivocsv:
-                    chaves_csv = ["Nome: ", "Status: ", "Aulas: ", "Dia do Pagamento: ", "Nivel: "]
-                    escritor = csv.DictWriter(arquivocsv, chaves_csv=chaves_csv)
+                    chaves_csv = ["Nome", "Status", "Aulas", "Dia do Pagamento", "Nivel"]
+                    escritor = csv.DictWriter(arquivocsv, fieldnames=chaves_csv)
 
                     escritor.writeheader()
-                    escritor.writerow({'Nome: ': f'{nome_do_aluno}', 'Status: ': f'{status_do_aluno}', 'Aulas: ': f'{aulas_assistidas}', 'Dia do Pagamento: ': f'{data_do_pagamento}', 'Nivel: ': f'{nivel_do_aluno}'})
+                    escritor.writerow({'Nome': f'{nome_do_aluno}', 'Status': f'{status_do_aluno}', 'Aulas': f'{aulas_assistidas}', 'Dia do Pagamento': f'{data_do_pagamento}', 'Nivel': f'{nivel_do_aluno}'})
 
                 # meus_alunos.append(novo_aluno)
 
