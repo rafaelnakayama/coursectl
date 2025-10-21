@@ -43,9 +43,9 @@ def main_menu():
                 break
 
             else:
-                print(f"A {option} não exite.")
+                print(f"A Opção '{option}' não exite.")
         except:
-            print(f"Caractere provavelmente não é inteiro.")
+            print(f"Este Caractere provavelmente não é inteiro.")
             Check = False
     
 main_menu()
