@@ -53,7 +53,10 @@ def remover_aluno(aluno):
     print(f"\nSUCESSO! o aluno {aluno} foi removido com sucesso.")
 
 
-def editar_aluno(aluno):
+def editar_aluno(nome_chave, key, new_value):
     # dataframe
     df = pd.read_csv(caminho_csv)
-    
+
+    df.loc[df['Nome'] == nome_chave]
+
+    df.loc[df['Nome'] == nome_chave, f'{key}'] = new_value

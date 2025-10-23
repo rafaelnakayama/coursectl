@@ -45,50 +45,36 @@ def main_menu():
                 sf.visualizar_alunos()
 
             elif option == 3:
-                lock = False
+                alterar_por_nome = str(input("Informe o nome do aluno: "))
+                chave = None
+                valor_atualizado = None
 
-                print("\nInformações a serem alteradas:")
+                print("\nSelecione o que deseja alterar: \n")
+                print("1) - Nome")
+                print("2) - Status")
+                print("3) - Quantidade de aulas")
+                print("4) - Dia do pagamento")
+                print("5) - Nivel do aluno")
 
-                print("1 - Nome")
-                print("2 - Status")
-                print("3 - Quantidade de aulas")
-                print("4 - Dia do pagamento")
-                print("5 - Nivel do aluno")
-                
-                sub_menu = int(input("Selecione uma opcao: "))
-                
-                while (lock == False):
-                    if sub_menu == 1:
-                        lock == True
-                        new_nome = str(input("Insira o novo nome do aluno: "))
+                selecao = int(input("Selecione um valor: "))
 
-                    elif sub_menu == 2:
-                        lock == True
-                        new_status = str(input("Insira o novo Status do aluno: "))
-                        if new_status == "S":
-                            new_status = "Ativo"
-                        elif new_status == "N":
-                            new_status = "Deligado"
-                        else:
-                            new_status = "UNKNOWN"
+                if selecao == 1:
+                    chave = 'Nome'
+                    valor_atualizado = str(input("Insira o novo Nome: "))
+                elif selecao == 2:
+                    chave = 'Status'
+                    valor_atualizado = str(input("Insira o novo Status: "))
+                elif selecao == 3:
+                    chave = 'Aulas'
+                    valor_atualizado = int(input("Informe a quantidade de Aulas: "))
+                elif selecao == 4:
+                    chave = 'Dia do Pagamento'
+                    valor_atualizado = str(input("Insira o novo dia de Pagamento: "))
+                elif selecao == 5:
+                    chave = 'Nivel'
+                    valor_atualizado = str(input("Insira o novo Nivel: "))
 
-
-                    elif sub_menu == 3:
-                        lock == True
-                        new_aulas = str(input("Insira a quantidade de aulas: "))
-                        
-                    elif sub_menu == 4:
-                        lock == True
-                        new_pagamento = str(input("Insira o dia de pagamento: "))
-                        
-                    elif sub_menu == 5:
-                        lock == True
-                        new_nivel = str(input("Insira o nivel do aluno: "))
-                        
-                    else:
-                        lock == False
-
-                
+                sf.editar_aluno(alterar_por_nome, chave, valor_atualizado)
 
             elif option == 4:
                 nome_aluno = str(input("Informe o nome do aluno: "))
