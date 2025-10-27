@@ -20,20 +20,10 @@ def main_menu():
 
 
         if option == 1:
-
-            nome_aluno = str(input("Informe o nome do aluno: "))
-
-            status_aluno = str(input("Este aluno está tendo aulas? (S/N): ")).upper()
-            if status_aluno == "S":
-                status_aluno = "Ativo"
-            elif status_aluno == "N":
-                status_aluno = "Deligado"
-            else:
-                status_aluno = "UNKNOWN"
-
-            aulas_aluno = int(input("Informe quantas aulas o aluno assistiu: "))
-            pagamento_aluno = str(input("Informe a data do pagamento: "))
-            nivel_aluno = str(input("Informe o nível do aluno: "))
+            # Clean
+            
+            # Captura os valores que existem dentro de ui.inputs_cadastro()
+            nome_aluno, status_aluno, aulas_aluno, pagamento_aluno, nivel_aluno = ui.inputs_cadastro()
 
             novo_Aluno = sf.cadastrar_aluno(nome_aluno, 
                                             status_aluno, 

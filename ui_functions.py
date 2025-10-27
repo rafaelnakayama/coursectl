@@ -89,7 +89,9 @@ def inputs_cadastro():
         aulas_aluno = int(input(f"{CORES['verde']}Aulas assistidas: {CORES['reset']}"))
         
     # Pagamento
-    pagamento_aluno = str(input("Informe o dia do pagamento: "))
+    pagamento_aluno = str(input(f"{CORES['verde']}Dia e mês do último pagamento: {CORES['reset']}"))
 
     # Nivel
-    nivel_aluno = str(input("Informe o nível do aluno: "))
+    nivel_aluno = str(input(f"{CORES['verde']}Nível do aluno: {CORES['reset']}"))
+
+    return nome_aluno, status_aluno, aulas_aluno, pagamento_aluno, nivel_aluno
