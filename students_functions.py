@@ -9,7 +9,6 @@ import pandas as pd
 # Caminho para evitar erros em outros diretorios
 caminho_csv = os.path.join(os.path.dirname(__file__), "data", "students.csv")
 
-
 def cadastrar_aluno(nome_param, status_param, aulas_param, pagamento_param, nivel_param):
     # Variavel Booleana que retorna True o csv ja foi criado e False se ainda nao
     arquivo_existe = os.path.exists(caminho_csv)
@@ -32,7 +31,6 @@ def cadastrar_aluno(nome_param, status_param, aulas_param, pagamento_param, nive
                            'Aulas': f'{aulas_param}', 
                            'Dia do Pagamento': f'{pagamento_param}', 
                            'Nivel': f'{nivel_param}'})
-        
 
 def visualizar_alunos():
     # Abre e faz a leitura do .csv
@@ -40,7 +38,6 @@ def visualizar_alunos():
         leitor_csv = csv.DictReader(arquivocsv, delimiter=' ', quotechar='|')
         for linha in leitor_csv:
             print(', '.join(linha))
-
 
 def remover_aluno(aluno):
 
@@ -64,7 +61,6 @@ def aluno_existe(nome_teste):
     # se houver, este valor sera maior ou igual a 1, se nao, sera igual a zero
     # Com o return podemos retornar um valor booleano True se a condicional (>= 1) for verdadeira, e False caso contrario
     return len(df.loc[df['Nome'] == nome_teste]) >= 1
-
 
 def editar_aluno(nome_chave, key, new_value):
     # dataframe

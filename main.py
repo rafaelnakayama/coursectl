@@ -8,20 +8,17 @@ def main_menu():
 
     while (Check == False):
         try:
-            option = int(input("\nSelecione uma das opcoes Acima: "))
+            option = int(input("\n\033[32mSelecione uma das opcoes acima: \033[0m"))
         except ValueError:
-            print("Este Caractere provavelmente não é inteiro.")
+            print("\033[1;31mO caractére inserido não é inteiro.\033[1;31m")
             Check = False
             continue
         except:
-            print(f"Outra coisa deu errada.")
+            print("\033[1;31mOutra coisa deu errada.\033[1;31m")
             Check = False
             continue
 
-
         if option == 1:
-            # Clean
-            
             # Captura os valores que existem dentro de ui.inputs_cadastro()
             nome_aluno, status_aluno, aulas_aluno, pagamento_aluno, nivel_aluno = ui.inputs_cadastro()
 
@@ -35,57 +32,37 @@ def main_menu():
             sf.visualizar_alunos()
 
         elif option == 3:
-
+            # Nome
             alterar_por_nome = str(input("Informe o nome do aluno: "))
             sf.aluno_existe(alterar_por_nome)
 
             while (sf.aluno_existe(alterar_por_nome) == False):
                 print("\033[1;31mEste aluno não está no banco de dados.\033[0m")
                 alterar_por_nome = str(input("Informe o nome do aluno: "))
-
-            chave = None
-            valor_atualizado = None
-
+            
+            # Chama o menu de Editar Aluno
             ui.menu_option_3()
 
-            selecao = int(input("Selecione um valor: "))
-
-            if selecao == 1:
-                chave = 'Nome'
-                valor_atualizado = str(input("Insira o novo Nome: "))
-            elif selecao == 2:
-                chave = 'Status'
-                valor_atualizado = str(input("Insira o novo Status: "))
-            elif selecao == 3:
-                chave = 'Aulas'
-                valor_atualizado = int(input("Informe a quantidade de Aulas: "))
-            elif selecao == 4:
-                chave = 'Dia do Pagamento'
-                valor_atualizado = str(input("Insira o novo dia de Pagamento: "))
-            elif selecao == 5:
-                chave = 'Nivel'
-                valor_atualizado = str(input("Insira o novo Nivel: "))
+            # Chama os inputs do editar, e associa os valores do return às variaveis locais.
+            chave, valor_atualizado = ui.inputs_editar()
 
             sf.editar_aluno(alterar_por_nome, chave, valor_atualizado)
 
         elif option == 4:
-            # Clean
-            nome_aluno = str(input("Informe o nome do aluno: "))
+            nome_aluno = str(input("\033[32mInforme o nome do aluno: \033[1;31m"))
             sf.aluno_existe(nome_aluno)
 
             while (sf.aluno_existe(nome_aluno) == False):
                 print("\033[1;31mEste aluno não está no banco de dados.\033[1;31m")
-                nome_aluno = str(input("Informe o nome do aluno: "))
+                nome_aluno = str(input("\033[32mInforme o nome do aluno: \033[1;31m"))
 
             sf.remover_aluno(nome_aluno)
 
         elif option == 5:
-            # Clean
             print("\n\033[1;35mSaindo do programa...\033[1;35m")
-            break
+            Check = True
 
         else:
-            # Clean
             print(f"\033[1;31mA Opção '{option}' não exite.\033[1;35m")
     
 main_menu()

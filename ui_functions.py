@@ -95,3 +95,27 @@ def inputs_cadastro():
     nivel_aluno = str(input(f"{CORES['verde']}Nível do aluno: {CORES['reset']}"))
 
     return nome_aluno, status_aluno, aulas_aluno, pagamento_aluno, nivel_aluno
+
+def inputs_editar():
+    chave = None
+    valor_atualizado = None
+
+    selecao = int(input("\n\033[35mSelecione um valor: \033[0m"))
+
+    if selecao == 1:
+        chave = 'Nome'
+        valor_atualizado = str(input("Insira o novo Nome: "))
+    elif selecao == 2:
+        chave = 'Status'
+        valor_atualizado = str(input("Insira o novo Status: "))
+    elif selecao == 3:
+        chave = 'Aulas'
+        valor_atualizado = int(input("Informe a quantidade de Aulas: "))
+    elif selecao == 4:
+        chave = 'Dia do Pagamento'
+        valor_atualizado = str(input("Insira o novo dia de Pagamento: "))
+    elif selecao == 5:
+        chave = 'Nivel'
+        valor_atualizado = str(input("Insira o novo Nivel: "))
+
+    return chave, valor_atualizado
