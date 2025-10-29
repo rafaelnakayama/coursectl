@@ -27,9 +27,13 @@ def main_menu():
                                             aulas_aluno,
                                             pagamento_aluno,
                                             nivel_aluno,)
+            print("\n")
+            ui.menu_interface()
+
 
         elif option == 2:
             sf.visualizar_alunos()
+            ui.menu_interface()
 
         elif option == 3:
             # Nome
@@ -48,6 +52,9 @@ def main_menu():
 
             sf.editar_aluno(alterar_por_nome, chave, valor_atualizado)
 
+            print("\n")
+            ui.menu_interface()
+
         elif option == 4:
             nome_aluno = str(input("\033[32mInforme o nome do aluno: \033[1;31m"))
             sf.aluno_existe(nome_aluno)
@@ -57,6 +64,9 @@ def main_menu():
                 nome_aluno = str(input("\033[32mInforme o nome do aluno: \033[1;31m"))
 
             sf.remover_aluno(nome_aluno)
+
+            print("\n")
+            ui.menu_interface()
 
         elif option == 5:
             print("\n\033[1;35mSaindo do programa...\033[1;35m")
