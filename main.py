@@ -35,16 +35,16 @@ def main_menu():
             ui.menu_interface()
 
         elif option == 3:
+            # Chama o menu de Editar Aluno
+            ui.menu_option_3()
+
             # Nome
-            alterar_por_nome = str(input("\033[32mInforme o nome deste aluno: \033[0m"))
+            alterar_por_nome = str(input("\n\033[38;5;208mInforme o do aluno a ser editado: \033[0m"))
             sf.aluno_existe(alterar_por_nome)
 
             while (sf.aluno_existe(alterar_por_nome) == False):
                 print("\033[1;31mEste aluno não está no banco de dados.\033[0m")
                 alterar_por_nome = str(input("\033[32mInforme o nome do aluno: \033[0m"))
-            
-            # Chama o menu de Editar Aluno
-            ui.menu_option_3()
 
             # Chama os inputs do editar, e associa os valores do return às variaveis locais.
             chave, valor_atualizado = ui.inputs_editar()

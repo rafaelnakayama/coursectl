@@ -103,7 +103,7 @@ def inputs_editar():
 
     while (Check == False):
         try:
-            selecao = int(input("\n\033[35mSelecione um valor: \033[0m"))
+            selecao = int(input("\033[1;32mSelecione um valor: \033[0m"))
 
             if selecao >= 1 and selecao <= 5:
                 Check = True
