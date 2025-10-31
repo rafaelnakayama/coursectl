@@ -39,24 +39,35 @@ CORES = {
     "fundo_branco": "\033[47m",
 }
 
+def menu_materiais():
+    BOLD = "\033[1m"
+    ORANGE_256 = "\033[38;5;208m"  # A common orange in 256-color palette
+    RESET = "\033[0m"
+
+    print(f"\n{ORANGE_256}{BOLD}_MENU AULAS_{RESET}\n")
+    print(f"{ORANGE_256}1) Cadastrar Material{CORES['reset']}")
+    print(f"{ORANGE_256}2) Visualizar Material{CORES['reset']}")
+    print(f"{ORANGE_256}3) Remover Material{CORES['reset']}")
+    print(f"{ORANGE_256}4) Voltar{CORES['reset']}")
 
 def menu_interface():
 
     hoje = datetime.datetime.now()
 
-    print(f"\n{CORES['azul_b']}MENU PRINCIPAL{CORES['reset']}\n")
-    print(f"{CORES['amarelo']}1) Cadastrar alunos{CORES['reset']}")
-    print(f"{CORES['amarelo']}2) Visualizar alunos{CORES['reset']}")
-    print(f"{CORES['amarelo']}3) Editar Informações{CORES['reset']}")
+    print(f"\n{CORES['azul_b']}[MENU PRINCIPAL]{CORES['reset']}\n")
+    print(f"{CORES['amarelo']}1) Cadastrar Aluno{CORES['reset']}")
+    print(f"{CORES['amarelo']}2) Visualizar Aluno{CORES['reset']}")
+    print(f"{CORES['amarelo']}3) Editar Aluno{CORES['reset']}")
     print(f"{CORES['amarelo']}4) Remover Aluno{CORES['reset']}")
-    print(f"{CORES['amarelo']}5) Sair do programa{CORES['reset']}")
+    print(f"{CORES['amarelo']}5) Materiais{CORES['reset']}")
+    print(f"{CORES['amarelo']}6) Sair do programa{CORES['reset']}")
 
     print(f"\n" + hoje.strftime("%x"))
 
 
 def menu_option_3():
 
-    print(f"\n{CORES['ciano_b']}MENU EDITAR{CORES['reset']}\n")
+    print(f"\n{CORES['ciano_b']}_MENU EDITAR ALUNO_{CORES['reset']}\n")
     print(f"{CORES['amarelo']}1) Alterar Nome{CORES['reset']}")
     print(f"{CORES['amarelo']}2) Alterar Status{CORES['reset']}")
     print(f"{CORES['amarelo']}3) Alterar Quantidade de Aulas{CORES['reset']}")
