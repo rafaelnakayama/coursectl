@@ -1,5 +1,5 @@
 """
-This file contains the main features of the program, such as the options available in the menu.
+This file contains the features of the student
 """
 
 import csv

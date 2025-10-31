@@ -74,6 +74,8 @@ def main_menu():
             # chama o menu Materiais
             ui.menu_materiais()
 
+            
+
         elif option == 6:
             print("\n\033[1;35mSaindo do programa...\033[1;35m")
             Check = True
