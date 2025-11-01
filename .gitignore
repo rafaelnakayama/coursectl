@@ -4,7 +4,7 @@
 
 
 # Arquivos e pastas sensiveis
-credentials.json
+credenciais.json
 token.json
 *.env
 
