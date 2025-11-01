@@ -17,7 +17,7 @@ caminho_token = os.path.join(os.path.dirname(__file__), "data", "token.json")
 
 camninho_cred = os.path.join(os.path.dirname(__file__), "data", "credenciais.json")
 
-# RSRRSRSRSRSRSRSRS
+# SIU
 
 def autenticar():
     credenciais = None
