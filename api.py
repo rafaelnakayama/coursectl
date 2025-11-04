@@ -56,9 +56,9 @@ def criar_csvs(service):
     df = pd.DataFrame(items)
     df.to_csv("data/test.csv", index=False)
 
-    items_aulas = []
-    items_textos = []
-    items_atividades = []
+    todas_aulas = []
+    todos_textos = []
+    todas_atividades = []
 
     if not items:
         print("Nenhuma aula encontrada.")
@@ -75,6 +75,7 @@ def criar_csvs(service):
                 ).execute()
 
                 items_aulas = results_aulas.get("files", [])
+                todas_aulas.extend(items_aulas)
 
             elif nome_loop.endswith("(Textos)"):
                 results_textos = service.files().list(
@@ -83,6 +84,7 @@ def criar_csvs(service):
                 ).execute()
 
                 items_textos = results_textos.get("files", [])
+                todos_textos.extend(items_textos)
 
             elif nome_loop.endswith("(Atividades)"):
                 results_atividades = service.files().list(
@@ -91,17 +93,18 @@ def criar_csvs(service):
                 ).execute()
 
                 items_atividades = results_atividades.get("files", [])
+                todas_atividades.extend(items_atividades)
 
             else:
                 pass
 
-    aulas_df = pd.DataFrame(items_aulas)
+    aulas_df = pd.DataFrame(todas_aulas)
     aulas_df.to_csv("data/aulas.csv", index=False)
 
-    textos_df = pd.DataFrame(items_textos)
+    textos_df = pd.DataFrame(todos_textos)
     textos_df.to_csv("data/textos.csv", index=False)
 
-    atividades_df = pd.DataFrame(items_atividades)
+    atividades_df = pd.DataFrame(todas_atividades)
     atividades_df.to_csv("data/exercicios.csv", index=False)
 
 criar_csvs(service)
