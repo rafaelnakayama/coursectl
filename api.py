@@ -3,10 +3,12 @@ This file contains the API features
 """
 
 import os
+import pandas as pd
+
+# GCP
 from google.auth.transport.requests import Request  # Requiscoes http
 from google.oauth2.credentials import Credentials # Gerencia o token de Acesso
 from google_auth_oauthlib.flow import InstalledAppFlow # controla o fluxo do OAuth (autenticacao via navegador)
-
 from googleapiclient.discovery import build
 
 
@@ -44,20 +46,24 @@ credenciais = autenticar()
 
 service = build('drive', 'v3', credentials=credenciais)
 
-def listar_arquivos(service):
+def criar_csvs(service):
 
     results = service.files().list(
-        pageSize=10, fields="files(id, name)", q= f"'{PASTA_CURSO_ID}' in parents and trashed = false"
+        pageSize=10, fields="files(name)", q= f"'{PASTA_CURSO_ID}' in parents and trashed = false"
     ).execute()
 
     items = results.get("files", [])
 
-    if not items:
+    df = pd.DataFrame(items)
+
+    df.to_csv("data/test.csv", index=False)
+
+    """if not items:
         print("Nenhum arquivo encontrado.")
     else:
         print("Arquivos encontrados:")
         for item in items:
-            print(f"{item['name']} ({item['id']})")
+            print(f"{item['name']}")"""
 
 
-listar_arquivos(service)
+criar_csvs(service)
