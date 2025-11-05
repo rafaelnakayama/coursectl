@@ -48,13 +48,12 @@ service = build('drive', 'v3', credentials=credenciais)
 def criar_csvs(service):
 
     results = service.files().list(
-        pageSize=10, fields="files(id,name)", q= f"'{PASTA_CURSO_ID}' in parents and trashed = false"
+        pageSize=12, 
+        fields="files(id,name)", 
+        q= f"'{PASTA_CURSO_ID}' in parents and trashed = false"
     ).execute()
 
     items = results.get("files", [])
-
-    df = pd.DataFrame(items)
-    df.to_csv("data/test.csv", index=False)
 
     todas_aulas = []
     todos_textos = []
@@ -62,6 +61,7 @@ def criar_csvs(service):
 
     if not items:
         print("Nenhuma aula encontrada.")
+        
     else:
         for item in items:
 
