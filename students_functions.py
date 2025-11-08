@@ -8,7 +8,7 @@ import pandas as pd
 
 from tabulate import tabulate
 
-# Caminho para evitar erros em outros diretorios
+# Caminhos para evitar erros em outros diretorios:
 
 # Caminho csv do students
 caminho_csv = os.path.join(os.path.dirname(__file__), "data", "students.csv")
@@ -42,55 +42,37 @@ def cadastrar_aluno(id_param,nome_param, status_param, aulas_param, pagamento_pa
         
     historico_existe = os.path.exists(historico_dir)
     if historico_existe == False:
-        os.makedirs("historicos", exist_ok=True)
+        os.makedirs(historico_dir, exist_ok=True)
 
-    # Os 3 caminhos do csv de cada aluno
+    historico_creator(id_param)
+
+def historico_creator(id_param):
+     # Os 3 caminhos do csv de cada aluno
     caminho_aulas_aluno_csv = os.path.join(os.path.dirname(__file__), "data", "historicos", f"{id_param}_aulas.csv")
     caminho_textos_aluno_csv = os.path.join(os.path.dirname(__file__), "data", "historicos", f"{id_param}_textos.csv")
     caminho_exercicios_aluno_csv = os.path.join(os.path.dirname(__file__), "data", "historicos", f"{id_param}_exercicios.csv")
 
-    # Verificando e criando aulas:
-    aulas_existe = os.path.exists(caminho_aulas_aluno_csv)
+    # Verificando e criando os materiais:
 
-    if aulas_existe:
-        vazio_a = os.path.getsize(caminho_aulas_aluno_csv)
+    criar_csv_vazio(caminho_aulas_aluno_csv)
+    criar_csv_vazio(caminho_textos_aluno_csv)
+    criar_csv_vazio(caminho_exercicios_aluno_csv)
 
-    with open(caminho_aulas_aluno_csv, "a", newline='') as aulascsv:
+def criar_csv_vazio(caminho):
+    vazio_material = 0
 
-        chaves_aulas_csv = ["id", "name"]
-        escritor = csv.DictWriter(aulascsv, fieldnames=chaves_aulas_csv)
+    # Verificando e criando csv:
+    material_existe = os.path.exists(caminho)
 
-        if aulas_existe == False or vazio_a == 0:
-            escritor.writeheader()
+    if material_existe:
+        vazio_material = os.path.getsize(caminho)
 
-        aulas_existe = os.path.exists(caminho_aulas_aluno_csv)
+    with open(caminho, "a", newline='') as material_csv:
 
-    # Verificando e criando os textos
-    textos_existe = os.path.exists(caminho_textos_aluno_csv)
+        chaves_material_csv = ["id", "name"]
+        escritor = csv.DictWriter(material_csv, fieldnames=chaves_material_csv)
 
-    if textos_existe:
-        vazio_t = os.path.getsize(caminho_textos_aluno_csv)
-
-    with open(caminho_textos_aluno_csv, "a", newline='') as textoscsv:
-
-        chaves_textos_csv = ["id", "name"]
-        escritor = csv.DictWriter(textoscsv, fieldnames=chaves_textos_csv)
-
-        if textos_existe == False or vazio_t == 0:
-            escritor.writeheader()
-
-    # Verificando e criando os exercicios
-    exercicios_existe = os.path.exists(caminho_exercicios_aluno_csv)
-
-    if exercicios_existe:
-        vazio_e = os.path.getsize(caminho_exercicios_aluno_csv)
-
-    with open(caminho_exercicios_aluno_csv, "a", newline='') as exercicioscsv:
-
-        chaves_exercicios_csv = ["id", "name"]
-        escritor = csv.DictWriter(exercicioscsv, fieldnames=chaves_exercicios_csv)
-
-        if exercicios_existe == False or vazio_e == 0:
+        if material_existe == False or vazio_material == 0:
             escritor.writeheader()
 
 def visualizar_alunos():
