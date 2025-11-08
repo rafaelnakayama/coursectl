@@ -47,8 +47,9 @@ def menu_materiais():
     print(f"\n{ORANGE_256}{BOLD}_MENU AULAS_{RESET}\n")
     print(f"{ORANGE_256}1) Visualizar Material{CORES['reset']}")
     print(f"{ORANGE_256}2) Histórico de Aulas{CORES['reset']}")
-    print(f"{ORANGE_256}3) Voltar{CORES['reset']}")
-    print(f"{ORANGE_256}4) Sair{CORES['reset']}")
+    print(f"{ORANGE_256}3) Adicionar Aula{CORES['reset']}")
+    print(f"{ORANGE_256}4) Voltar{CORES['reset']}")
+    print(f"{ORANGE_256}5) Sair{CORES['reset']}")
 
 def menu_interface():
 

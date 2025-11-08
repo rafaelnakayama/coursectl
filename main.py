@@ -66,7 +66,9 @@ def main_menu():
                 print("\033[1;31mEste aluno não está no banco de dados.\033[1;31m")
                 nome_aluno = str(input("\033[32mInforme o nome do aluno: \033[1;31m"))
 
-            sf.remover_aluno(nome_aluno)
+            id_aluno = str(input("\033[32mInforme o ID do aluno: \033[1;31m"))
+
+            sf.remover_aluno(nome_aluno, id_aluno)
 
             print("\n")
             ui.menu_interface()
@@ -93,11 +95,14 @@ def main_menu():
                     tipo = cf.validar_tipo()
                     cf.visualizar_material(tipo)
 
-                elif opcao == 3:
+                # opcao == 2 (viz) yet to be made
+                # opcao == 3 (add) yet to be made
+
+                elif opcao == 4:
                     print("\n\033[1;35mRetornando ao menu principal\033[1;35m")
                     Validar = True
 
-                elif opcao == 4:
+                elif opcao == 5:
                     Validar = True
                     Check = True
                     print("\n\033[1;35mSaindo do programa...\033[1;35m")
