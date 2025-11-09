@@ -59,16 +59,30 @@ def main_menu():
             ui.menu_interface()
 
         elif option == 4:
-            nome_aluno = str(input("\033[32mInforme o nome do aluno: \033[1;31m")).lower()
+            nome_aluno = str(input("\033[32mInforme o nome do aluno: \033[1;31m")).lower().strip()
             sf.aluno_existe(nome_aluno)
 
             while (sf.aluno_existe(nome_aluno) == False):
                 print("\033[1;31mEste aluno não está no banco de dados.\033[1;31m")
                 nome_aluno = str(input("\033[32mInforme o nome do aluno: \033[1;31m"))
 
-            id_aluno = sf.pegar_id_por_nome(nome_aluno)
+            verifica = str(input(f"\033[41mTEM CERTEZA QUE DESEJA APAGAR O ALUNO {nome_aluno} (S/N): \033[0m")).lower().strip()
+            while (verifica != "s" and verifica != "n"):
+                print("\033[1;31mOpcao Invalida.\033[1;31m")
+                verifica = str(input(f"\033[41mTEM CERTEZA QUE DESEJA APAGAR O ALUNO {nome_aluno} (S/N): \033[0m")).lower().strip()
 
-            sf.remover_aluno(nome_aluno, id_aluno)
+            if verifica == "s":
+                nome_check = str(input(f"\033[41mDIGITE O NOME {nome_aluno} PARA APAGAR: \033[0m")).lower().strip()
+                while(nome_check != nome_aluno):
+                    nome_check = str(input(f"\033[41mDIGITE O NOME {nome_aluno} PARA APAGAR: \033[0m")).lower().strip()
+            else:
+                print("\n\033[1;35mOperação cancelada. Retornando ao menu principal...\033[0m")
+                ui.menu_interface()
+                continue
+
+            id_aluno = sf.pegar_id_por_nome(nome_check)
+
+            sf.remover_aluno(nome_check, id_aluno)
 
             print("\n")
             ui.menu_interface()
@@ -112,7 +126,7 @@ def main_menu():
 
                 if opcao == 1 or opcao == 2:
                     ui.menu_materiais()
-                elif opcao == 3:
+                elif opcao == 4:
                     ui.menu_interface()
                 else:
                     continue
