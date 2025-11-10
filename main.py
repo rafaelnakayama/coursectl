@@ -110,13 +110,25 @@ def main_menu():
                     cf.visualizar_material(tipo)
 
                 # opcao == 2 (viz) yet to be made
-                # opcao == 3 (add) yet to be made
 
-                elif opcao == 4:
+                elif opcao == 3:
+                    nome_aluno_m = str(input("\033[32mInforme o nome do aluno: \033[1;31m")).lower().strip()
+                    sf.aluno_existe(nome_aluno_m)
+
+                    while (sf.aluno_existe(nome_aluno_m) == False):
+                        print("\033[1;31mEste aluno não está no banco de dados.\033[1;31m")
+                        nome_aluno_m = str(input("\033[32mInforme o nome do aluno: \033[1;31m"))
+
+                    id_aluno_m = sf.pegar_id_por_nome(nome_aluno_m)
+                    tipo = cf.validar_tipo()
+
+                # opcao == 4 (remove) yet to be made
+
+                elif opcao == 5:
                     print("\n\033[1;35mRetornando ao menu principal\033[1;35m")
                     Validar = True
 
-                elif opcao == 5:
+                elif opcao == 6:
                     Validar = True
                     Check = True
                     print("\n\033[1;35mSaindo do programa...\033[1;35m")
@@ -126,7 +138,7 @@ def main_menu():
 
                 if opcao == 1 or opcao == 2:
                     ui.menu_materiais()
-                elif opcao == 4:
+                elif opcao == 5:
                     ui.menu_interface()
                 else:
                     continue

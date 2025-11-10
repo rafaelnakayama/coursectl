@@ -5,7 +5,6 @@ This file contains the features of the english materials
 import csv
 import os
 import pandas as pd
-import uuid
 from tabulate import tabulate
 
 # para caminhos
