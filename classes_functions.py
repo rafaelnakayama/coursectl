@@ -43,42 +43,62 @@ def validar_tipo():
 OPCAO 1 DO MENU MATERIAIS
 """
 
-def visualizar_material(type):
+def visualizar_material(tipo):
 
     caminho_relativo = None
 
-    if type == 1:
+    if tipo == 1:
         caminho_relativo = ARQUIVOS['aulas']
-    elif type == 2:
+    elif tipo == 2:
         caminho_relativo = ARQUIVOS['textos']
     else:
         caminho_relativo = ARQUIVOS['exercicios']
 
-    # Abre e faz a leitura do .csv
     with open(caminho_relativo, newline='') as arquivocsv:
 
         leitor_csv = csv.DictReader(arquivocsv)
 
         headers = ['id','name']
-        table = [] # Lista Vazia
+        table = []
 
-        # Insere cada campo da linha especifica dentro da tabela
+        # Insere cada campo da linha especifica dentro da tabela tabulate
         for linha in leitor_csv:
             table.append([linha['id'], linha['name']])
 
-        print(tabulate(table, headers=headers, tablefmt="fancy_grid")) # Usa o cabecalho headers que definimos anteriormente
-        # Dispensa o uso de loop, printa cada linha uma vez assim como o cabecalho
+        print(tabulate(table, headers=headers, tablefmt="fancy_grid"))
 
 """
 OPCAO 2 DO MENU MATERIAIS
 """
 
-def visualizar_historico(id_param):
+def visualizar_historico(id_param, tipo):
 
     # Os 3 caminhos do csv de cada aluno
     caminho_aulas_aluno_csv = os.path.join(os.path.dirname(__file__), "data", "historicos", f"{id_param}_aulas.csv")
     caminho_textos_aluno_csv = os.path.join(os.path.dirname(__file__), "data", "historicos", f"{id_param}_textos.csv")
     caminho_exercicios_aluno_csv = os.path.join(os.path.dirname(__file__), "data", "historicos", f"{id_param}_exercicios.csv")
+
+    caminho_relativo = None
+
+    if tipo == 1:
+        caminho_relativo = caminho_aulas_aluno_csv
+    elif tipo == 2:
+        caminho_relativo = caminho_textos_aluno_csv
+    else:
+        caminho_relativo = caminho_exercicios_aluno_csv
+
+    with open(caminho_relativo, newline='') as arquivocsv:
+
+        leitor_csv = csv.DictReader(arquivocsv)
+
+        headers = ['id','name']
+        table = []
+
+        # Insere cada campo da linha especifica dentro da tabela tabulate
+        for linha in leitor_csv:
+            table.append([linha['id'], linha['name']])
+
+        print(tabulate(table, headers=headers, tablefmt="fancy_grid"))
 
 """
 OPCAO 3 DO MENU MATERIAIS

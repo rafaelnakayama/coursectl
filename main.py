@@ -25,12 +25,15 @@ def main_menu():
             # Captura os valores que existem dentro de ui.inputs_cadastro()
             id_aluno, nome_aluno, status_aluno, aulas_aluno, pagamento_aluno, nivel_aluno = ui.inputs_cadastro()
 
-            novo_Aluno = sf.cadastrar_aluno(id_aluno,
-                                            nome_aluno, 
-                                            status_aluno, 
-                                            aulas_aluno,
-                                            pagamento_aluno,
-                                            nivel_aluno,)
+            sf.cadastrar_aluno(
+                            id_aluno,
+                            nome_aluno, 
+                            status_aluno, 
+                            aulas_aluno,
+                            pagamento_aluno,
+                            nivel_aluno,
+                            )
+            
             print("\n")
             ui.menu_interface()
 
@@ -39,10 +42,8 @@ def main_menu():
             ui.menu_interface()
 
         elif option == 3:
-            # Chama o menu de Editar Aluno
             ui.menu_option_3()
 
-            # Nome
             alterar_por_nome = str(input("\n\033[38;5;208mInforme o do aluno a ser editado: \033[0m"))
             sf.aluno_existe(alterar_por_nome)
 
@@ -50,7 +51,6 @@ def main_menu():
                 print("\033[1;31mEste aluno não está no banco de dados.\033[0m")
                 alterar_por_nome = str(input("\033[32mInforme o nome do aluno: \033[0m"))
 
-            # Chama os inputs do editar, e associa os valores do return às variaveis locais.
             chave, valor_atualizado = ui.inputs_editar()
 
             sf.editar_aluno(alterar_por_nome, chave, valor_atualizado)
@@ -88,7 +88,6 @@ def main_menu():
             ui.menu_interface()
 
         elif option == 5:
-            # chama o menu Materiais
             ui.menu_materiais()
 
             Validar = False
@@ -109,7 +108,6 @@ def main_menu():
                     tipo_v = cf.validar_tipo()
                     cf.visualizar_material(tipo_v)
 
-                # opcao == 2 (viz) yet to be made
                 elif opcao == 2:
                     nome_aluno_h = str(input("\033[32mInforme o nome do aluno: \033[1;31m")).lower().strip()
                     sf.aluno_existe(nome_aluno_h)
@@ -123,7 +121,6 @@ def main_menu():
                     tipo_h = cf.validar_tipo()
 
                     cf.visualizar_historico(id_aluno_h, tipo_h)
-
 
                 elif opcao == 3:
                     nome_aluno_m = str(input("\033[32mInforme o nome do aluno: \033[1;31m")).lower().strip()
