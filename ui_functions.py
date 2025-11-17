@@ -4,6 +4,8 @@ This file contains the User Interface functions
 
 import datetime
 import students_functions as sf
+import os
+import pandas as pd
 import uuid
 
 # Pedi para o chat gpt gerar cores para serem inseridos nos prints
@@ -66,7 +68,6 @@ def menu_interface():
 
     print(f"\n" + hoje.strftime("%x"))
 
-
 def menu_option_3():
 
     print(f"\n{CORES['ciano_b']}_MENU EDITAR ALUNO_{CORES['reset']}\n")
@@ -124,11 +125,7 @@ def inputs_cadastro():
         status_aluno = "UNKNOWN"
 
     # Aulas
-    aulas_aluno = int(input(f"{CORES['verde']}Aulas assistidas: {CORES['reset']}"))
-
-    while(aulas_aluno < 0):
-        print(f"{CORES['vermelho']}Este valor não pode ser Negativo.{CORES['reset']}")
-        aulas_aluno = int(input(f"{CORES['verde']}Aulas assistidas: {CORES['reset']}"))
+    aulas_aluno = 0
         
     # Pagamento
     pagamento_aluno = str(input(f"{CORES['verde']}Dia e mês do último pagamento: {CORES['reset']}"))
@@ -137,6 +134,24 @@ def inputs_cadastro():
     nivel_aluno = str(input(f"{CORES['verde']}Nível do aluno: {CORES['reset']}"))
 
     return id_aluno, nome_aluno, status_aluno, aulas_aluno, pagamento_aluno, nivel_aluno
+
+def quantidade_aulas(id_param):
+    # Os 3 caminhos do csv de cada aluno
+    caminho_aulas_aluno_csv = os.path.join(os.path.dirname(__file__), "data", "historicos", f"{id_param}_aulas.csv")
+    caminho_textos_aluno_csv = os.path.join(os.path.dirname(__file__), "data", "historicos", f"{id_param}_textos.csv")
+    caminho_exercicios_aluno_csv = os.path.join(os.path.dirname(__file__), "data", "historicos", f"{id_param}_exercicios.csv")
+
+    ler_aulas = pd.read_csv(caminho_aulas_aluno_csv)
+    ler_textos = pd.read_csv(caminho_textos_aluno_csv)
+    ler_exercicios = pd.read_csv(caminho_exercicios_aluno_csv)
+
+    num_linhas_aulas = len(ler_aulas)
+    num_linhas_textos = len(ler_textos)
+    num_linhas_exercicios = len(ler_exercicios)
+
+    quantia = num_linhas_aulas + num_linhas_textos + num_linhas_exercicios
+
+    return quantia
 
 def inputs_editar():
     Check = False

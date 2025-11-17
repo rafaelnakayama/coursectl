@@ -1,8 +1,9 @@
 import csv
 import os
 import pandas as pd
-from tabulate import tabulate
 import re
+
+from tabulate import tabulate
 
 # para caminhos
 base_dir = os.path.dirname(__file__)
