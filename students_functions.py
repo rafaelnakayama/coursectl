@@ -143,7 +143,6 @@ def aluno_existe(nome_teste):
     return len(df.loc[df['Nome'] == nome_teste]) >= 1
 
 def editar_aluno(nome_chave, key, new_value):
-    # dataframe
     df = pd.read_csv(caminho_csv)
     
     # Colocando strip() e lower() para evitar erros de espacos inuteis e erros de case sensitive respectivamente
@@ -151,7 +150,7 @@ def editar_aluno(nome_chave, key, new_value):
     nome_chave = nome_chave.strip().lower()
 
     df.loc[df['Nome'] == nome_chave, key] = new_value
-    df.to_csv("data/students.csv", index=False)
+    df.to_csv(caminho_csv, index=False)
 
 def verificar_csv():
 

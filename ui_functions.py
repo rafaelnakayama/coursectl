@@ -60,7 +60,7 @@ def menu_interface():
 
     print(f"\n{CORES['azul_b']}[MENU PRINCIPAL]{CORES['reset']}\n")
     print(f"{CORES['amarelo']}1) Cadastrar Aluno{CORES['reset']}")
-    print(f"{CORES['amarelo']}2) Visualizar Aluno{CORES['reset']}")
+    print(f"{CORES['amarelo']}2) Visualizar Alunos{CORES['reset']}")
     print(f"{CORES['amarelo']}3) Editar Aluno{CORES['reset']}")
     print(f"{CORES['amarelo']}4) Remover Aluno{CORES['reset']}")
     print(f"{CORES['amarelo']}5) Materiais{CORES['reset']}")
