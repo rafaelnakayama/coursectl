@@ -47,13 +47,12 @@ CORES = {
 
 def menu_materiais():
 
-    print(f"\n{CORES['ORANGE_256']}{CORES['BOLD']}_MENU AULAS_{CORES['reset']}\n")
+    print(f"\n{CORES['ORANGE_256']}{CORES['BOLD']}_MENU MATERIAIS_{CORES['reset']}\n")
     print(f"{CORES['ORANGE_256']}1) Visualizar Material{CORES['reset']}")
     print(f"{CORES['ORANGE_256']}2) Histórico do Aluno{CORES['reset']}")
     print(f"{CORES['ORANGE_256']}3) Adicionar ao Histórico{CORES['reset']}")
     print(f"{CORES['ORANGE_256']}4) Remover do Histórico{CORES['reset']}")
     print(f"{CORES['ORANGE_256']}5) Voltar{CORES['reset']}")
-    print(f"{CORES['ORANGE_256']}6) Sair{CORES['reset']}")
 
 def menu_interface():
 

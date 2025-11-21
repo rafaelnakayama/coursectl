@@ -101,11 +101,6 @@ def main_menu():
                     print("\n\033[1;35mRetornando ao menu principal\033[1;35m")
                     Validar = True
 
-                elif opcao == 6:
-                    Validar = True
-                    print("\n\033[1;35mSaindo do programa...\033[1;35m")
-                    break
-
                 else:
                     print(f"\033[1;31mA Opção '{opcao}' não exite.\033[1;35m")
 
