@@ -92,9 +92,9 @@ def confirmar_remover(nome_aluno):
         print(f"{CORES['vermelho_b']}Opcao Invalida.{CORES['reset']}")
         verifica = str(input(f"{CORES['vermelho']}TEM CERTEZA QUE DESEJA APAGAR O ALUNO {CORES['reset']}{CORES['fundo_vermelho']}{nome_aluno}{CORES['reset']}{CORES['vermelho']} (S/N){CORES['reset']}: ")).lower().strip()
     if verifica == "s":
-        nome_check = str(input(f"{CORES['vermelho']}DIGITE O NOME {CORES['fundo_vermelho']}{nome_aluno}{CORES['reset']}{CORES['vermelho']} PARA APAGAR:{CORES['reset']} ")).lower().strip()
+        nome_check = str(input(f"{CORES['vermelho']}DIGITE O NOME {CORES['reset']}{CORES['fundo_vermelho']}{nome_aluno}{CORES['reset']}{CORES['vermelho']} PARA APAGAR:{CORES['reset']} ")).lower().strip()
         while(nome_check != nome_aluno):
-            nome_check = str(input(f"{CORES['vermelho']}DIGITE O NOME {CORES['fundo_vermelho']}{nome_aluno}{CORES['reset']}{CORES['vermelho']} PARA APAGAR:{CORES['reset']} ")).lower().strip()
+            nome_check = str(input(f"{CORES['vermelho']}DIGITE O NOME {CORES['reset']}{CORES['fundo_vermelho']}{nome_aluno}{CORES['reset']}{CORES['vermelho']} PARA APAGAR:{CORES['reset']} ")).lower().strip()
     else:
         nome_check = None
 

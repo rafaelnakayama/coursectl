@@ -1,27 +1,38 @@
-# Este .gitignore deve estar sempre na pasta central do projeto
-# pois, ele manda ignorar (dai o nome gitignore) pacotes e outras coisas pesadas que sao locais
-# o .gitignore garante que nosso projeto suba limpo para o github.
-
-
-# Arquivos e pastas sensiveis
+# ---- ARQUIVOS SENSÍVEIS ----
 credenciais.json
 token.json
 *.env
 
-# Ignorar ambiente virtual
+# ---- AMBIENTE VIRTUAL ----
 venv/
+.env/
+.venv/
 
-# Ignorar caches do Python
+# ---- CACHES DO PYTHON ----
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 
-# Ignorar arquivos temporários
+# ---- ARQUIVOS TEMPORÁRIOS DO SISTEMA ----
 .DS_Store
+Thumbs.db
+
+# ---- EDITOR / IDE ----
 .vscode/
 .ipynb_checkpoints/
+
+# ---- LOGS ----
 *.log
 
-# Ignorar arquivos do sistema
-Thumbs.db
+# ---- PYINSTALLER ----
+build/
+dist/
+*.spec             # O arquivo .spec não deve ser commitado
+*.exe              # Seus executáveis não devem ir para o GitHub
+*.dll
+*.so
+
+# ---- OUTROS ----
+*.bak
+*.tmp
