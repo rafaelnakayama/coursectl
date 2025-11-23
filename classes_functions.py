@@ -81,8 +81,13 @@ def notes_options():
             continue
     return tipo
 
-def adicionar_lembrete():
-    print("a")
+def adicionar_lembrete(id):
+    lembrete = str(input("\033[38;5;208mDigite o lembrete:\033[0m ")).capitalize().strip()
+
+    df_anotacoes = pd.read_csv(caminho_anotacoes)
+
+    df_anotacoes.loc[df_anotacoes['ID'] == id, 'Lembrete'] = lembrete
+    df_anotacoes.to_csv(caminho_anotacoes, index=False)
 
 def visualizar_material(tipo):      # Opcao 1 do menu materiais
     if tipo == 1:

@@ -110,13 +110,13 @@ def aluno_existe(nome_teste):
 
     return len(df.loc[df['Nome'] == nome_teste]) >= 1
 
-def editar_aluno(nome_chave, key, new_value):
+def editar_aluno(nome_do_aluno, key, new_value):
     df = pd.read_csv(caminho_csv)
 
     df['Nome'] = df['Nome'].str.strip().str.lower()
-    nome_chave = nome_chave.strip().lower()
+    nome_do_aluno = nome_do_aluno.strip().lower()
 
-    df.loc[df['Nome'] == nome_chave, key] = new_value
+    df.loc[df['Nome'] == nome_do_aluno, key] = new_value
     df.to_csv(caminho_csv, index=False)
 
 def verificar_csv():
