@@ -32,20 +32,23 @@ def verificar_anotacoes_csv():
         print("O arquivo estava vazio, o cabecalho foi criado.")
 
 def predefinir_notes():
-    df_students = pd.read_csv(caminho_students)
+    if os.path.getsize(caminho_anotacoes) == 0:
+        df_students = pd.read_csv(caminho_students)
 
-    df_students['ID'] = df_students['ID'].str.strip().str.lower()
-    id_aluno = df_students[df_students['ID']]
+        with open(caminho_anotacoes, "a", newline='') as notescsv:
+            chaves = ['ID', 'Nome', 'Lembrete']
+            escritor = csv.DictWriter(notescsv, fieldnames=chaves)
 
-    nome_aluno = id_aluno['Nome'].iloc[0]
+            for i in range(len(df_students)):
+                linha = df_students.iloc[i]
+                id_aluno = linha['ID']
+                nome_aluno = linha['Nome']
 
-    with open(caminho_anotacoes, "a", newline='') as notescsv:
-        chaves = ['ID', 'Nome', 'Lembrete']
-        escritor = csv.DictWriter(notescsv, fieldnames=chaves)
-
-        escritor.writerow({'ID': f'{id_aluno}',
-                           'Nome': f'{nome_aluno}',
-                           'Lembrete': 'Vazio'})
+                escritor.writerow({'ID': f'{id_aluno}',
+                                    'Nome': f'{nome_aluno}',
+                                    'Lembrete': 'Vazio'})
+    else:
+        pass
 
 def ler_anotacoes():
     with open(caminho_anotacoes, newline='') as arquivocsv:

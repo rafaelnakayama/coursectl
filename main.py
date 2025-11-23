@@ -101,11 +101,13 @@ def main_menu():
                 elif opcao == 5:
                     cf.predefinir_notes()
                     opcao_lembretes = cf.notes_options()
+
                     if opcao_lembretes == 1:
                         cf.ler_anotacoes
                     else:
                         nome_aluno_anotar = ui.pegar_nome()
                         id_aluno_anotar = sf.pegar_id_por_nome(nome_aluno_anotar)
+                        cf.adicionar_lembrete(id_aluno_anotar)
 
                 elif opcao == 6:
                     print("\n\033[1;35mRetornando ao menu principal\033[1;35m")
