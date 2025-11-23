@@ -7,6 +7,7 @@ import utils
 from tabulate import tabulate
 
 caminho_anotacoes = utils.writable_path("data", "notes.csv")
+caminho_students = utils.writable_path("data", "students.csv")
 
 ARQUIVOS = {
     'aulas': utils.resource_path("data", "aulas.csv"),
@@ -16,7 +17,7 @@ ARQUIVOS = {
 
 def verificar_anotacoes_csv():
 
-    header = ['ID', 'Nome', 'Lembretes']
+    header = ['ID', 'Nome', 'Lembrete']
 
     if not os.path.exists(caminho_anotacoes):
         with open(caminho_anotacoes, mode='w', newline='', encoding='utf-8') as arquivo:
@@ -30,14 +31,30 @@ def verificar_anotacoes_csv():
             escritor.writerow(header)
         print("O arquivo estava vazio, o cabecalho foi criado.")
 
+def predefinir_notes():
+    df_students = pd.read_csv(caminho_students)
+
+    df_students['ID'] = df_students['ID'].str.strip().str.lower()
+    id_aluno = df_students[df_students['ID']]
+
+    nome_aluno = id_aluno['Nome'].iloc[0]
+
+    with open(caminho_anotacoes, "a", newline='') as notescsv:
+        chaves = ['ID', 'Nome', 'Lembrete']
+        escritor = csv.DictWriter(notescsv, fieldnames=chaves)
+
+        escritor.writerow({'ID': f'{id_aluno}',
+                           'Nome': f'{nome_aluno}',
+                           'Lembrete': 'Vazio'})
+
 def ler_anotacoes():
     with open(caminho_anotacoes, newline='') as arquivocsv:
         leitor_csv = csv.DictReader(arquivocsv)
-        headers = ['ID', 'Nome', 'Lembretes']
+        headers = ['ID', 'Nome', 'Lembrete']
         table = [] 
 
         for linha in leitor_csv:
-            table.append([linha['ID'], linha['Nome'], linha['Lembretes']]) 
+            table.append([linha['ID'], linha['Nome'], linha['Lembrete']]) 
 
         print(tabulate(table, headers=headers, tablefmt="fancy_grid"))
 
@@ -61,7 +78,7 @@ def notes_options():
             continue
     return tipo
 
-def criar_lembretes():
+def adicionar_lembrete():
     print("a")
 
 def visualizar_material(tipo):      # Opcao 1 do menu materiais
