@@ -103,7 +103,7 @@ def main_menu():
                     opcao_lembretes = cf.notes_options()
 
                     if opcao_lembretes == 1:
-                        cf.ler_anotacoes
+                        cf.ler_anotacoes()
                     else:
                         nome_aluno_anotar = ui.pegar_nome()
                         id_aluno_anotar = sf.pegar_id_por_nome(nome_aluno_anotar)

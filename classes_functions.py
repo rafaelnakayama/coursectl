@@ -29,10 +29,12 @@ def verificar_anotacoes_csv():
         with open(caminho_anotacoes, mode='w', newline='', encoding='utf-8') as arquivo:
             escritor = csv.writer(arquivo)
             escritor.writerow(header)
-        print("O arquivo estava vazio, o cabecalho foi criado.")
+        print("O arquivo estava 'notes.csv' vazio, o cabecalho foi criado.")
 
 def predefinir_notes():
-    if os.path.getsize(caminho_anotacoes) == 0:
+    df_anotacoes = pd.read_csv(caminho_anotacoes)
+
+    if len(df_anotacoes) <= 1:
         df_students = pd.read_csv(caminho_students)
 
         with open(caminho_anotacoes, "a", newline='') as notescsv:
@@ -57,7 +59,9 @@ def ler_anotacoes():
         table = [] 
 
         for linha in leitor_csv:
-            table.append([linha['ID'], linha['Nome'], linha['Lembrete']]) 
+            id_encurtado = linha['ID'][:6] + "..."
+
+            table.append([id_encurtado, linha['Nome'], linha['Lembrete']]) 
 
         print(tabulate(table, headers=headers, tablefmt="fancy_grid"))
 
