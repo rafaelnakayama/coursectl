@@ -127,9 +127,9 @@ def inputs_cadastro():
     return id_aluno, nome_aluno, status_aluno, aulas_aluno, pagamento_aluno, nivel_aluno
 
 def quantidade_aulas(id_param):
-    caminho_aulas_aluno_csv = utils.resource_path("data", "historicos", f"{id_param}_aulas.csv")
-    caminho_textos_aluno_csv = utils.resource_path("data", "historicos", f"{id_param}_textos.csv")
-    caminho_exercicios_aluno_csv = utils.resource_path("data", "historicos", f"{id_param}_exercicios.csv")
+    caminho_aulas_aluno_csv = utils.writable_path("data", "historicos", f"{id_param}_aulas.csv")
+    caminho_textos_aluno_csv = utils.writable_path("data", "historicos", f"{id_param}_textos.csv")
+    caminho_exercicios_aluno_csv = utils.writable_path("data", "historicos", f"{id_param}_exercicios.csv")
 
     ler_aulas = pd.read_csv(caminho_aulas_aluno_csv)
     ler_textos = pd.read_csv(caminho_textos_aluno_csv)

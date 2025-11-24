@@ -34,7 +34,7 @@ def verificar_anotacoes_csv():
 def predefinir_notes():
     df_anotacoes = pd.read_csv(caminho_anotacoes)
 
-    if len(df_anotacoes) <= 1:
+    if len(df_anotacoes) < 1:
         df_students = pd.read_csv(caminho_students)
 
         with open(caminho_anotacoes, "a", newline='') as notescsv:
@@ -115,11 +115,11 @@ def visualizar_material(tipo):      # Opcao 1 do menu materiais
 
 def visualizar_historico(id_param, tipo):   # Opcao 2 do menu materiais
     if tipo == 1:
-        caminho_relativo = utils.resource_path("data", "historicos", f"{id_param}_aulas.csv")
+        caminho_relativo = utils.writable_path("data", "historicos", f"{id_param}_aulas.csv")
     elif tipo == 2:
-        caminho_relativo = utils.resource_path("data", "historicos", f"{id_param}_textos.csv")
+        caminho_relativo = utils.writable_path("data", "historicos", f"{id_param}_textos.csv")
     else:
-        caminho_relativo = utils.resource_path("data", "historicos", f"{id_param}_exercicios.csv")
+        caminho_relativo = utils.writable_path("data", "historicos", f"{id_param}_exercicios.csv")
 
     with open(caminho_relativo, newline='') as arquivocsv:
 
