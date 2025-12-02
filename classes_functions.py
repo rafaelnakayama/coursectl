@@ -52,12 +52,19 @@ def predefinir_notes():
     else:
         pass
 
-def criar_lembrete_aluno(id):
-    lembrete_default = "Vazio"
+def criar_lembrete_aluno(id_cad, nome_cad):
 
-    df_anotacoes = pd.read_csv(caminho_anotacoes)
-    df_anotacoes.loc[df_anotacoes['ID'] == id, 'Lembrete'] = lembrete_default
-    df_anotacoes.to_csv(caminho_anotacoes, index=False)
+    with open(caminho_anotacoes, "a", newline='') as notescsv:
+        chaves = ['ID', 'Nome', 'Lembrete']
+        escritor = csv.DictWriter(notescsv, fieldnames=chaves)
+
+        id_aluno = id_cad
+        nome_aluno = nome_cad
+        lembrete_default = "VazioZINrs"
+
+        escritor.writerow({'ID': id_aluno,
+                           'Nome': nome_aluno,
+                           'Lembrete': lembrete_default})
 
 def ler_anotacoes():
     with open(caminho_anotacoes, newline='') as arquivocsv:

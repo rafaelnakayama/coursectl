@@ -37,12 +37,11 @@ def cadastrar_aluno(id_param,nome_param, status_param, aulas_param, pagamento_pa
         
     historico_existe = os.path.exists(historico_dir)
 
-    criar_lembrete_aluno(id_param)
-
     if historico_existe == False:
         os.makedirs(historico_dir, exist_ok=True)
 
     historico_creator(id_param)
+    criar_lembrete_aluno(id_param, nome_param)
 
 def historico_creator(id_param):
     caminho_aulas_aluno_csv = utils.writable_path("data", "historicos", f"{id_param}_aulas.csv")
@@ -71,7 +70,7 @@ def criar_csv_vazio(caminho):
 def visualizar_alunos():
     with open(caminho_csv, newline='') as arquivocsv:
         leitor_csv = csv.DictReader(arquivocsv)
-        headers = ['ID','Nome', 'Status', 'Aulas Assistidas', 'Dia do Pagamento', 'Nível']
+        headers = ['ID','Nome', 'Status', 'Aulas Assistidas', 'Dia do Pagamento', 'Nivel']
         table = [] 
 
         for linha in leitor_csv:
@@ -80,28 +79,26 @@ def visualizar_alunos():
 
         print(tabulate(table, headers=headers, tablefmt="fancy_grid"))
 
-def remover_aluno(aluno, id_aluno):
-    if aluno == None:
-        print("\n\033[1;35mOperação cancelada. Retornando ao menu principal...\033[0m")
-    else:
-        caminho_aulas_aluno_csv = utils.writable_path("data", "historicos", f"{id_aluno}_aulas.csv")
-        caminho_textos_aluno_csv = utils.writable_path("data", "historicos", f"{id_aluno}_textos.csv")
-        caminho_exercicios_aluno_csv = utils.writable_path("data", "historicos", f"{id_aluno}_exercicios.csv")
+def remover_aluno(nome_aluno, id_aluno):
 
-        df = pd.read_csv(caminho_csv)
-        df_anotacoes = pd.read_csv(caminho_anotacoes)
+    caminho_aulas_aluno_csv = utils.writable_path("data", "historicos", f"{id_aluno}_aulas.csv")
+    caminho_textos_aluno_csv = utils.writable_path("data", "historicos", f"{id_aluno}_textos.csv")
+    caminho_exercicios_aluno_csv = utils.writable_path("data", "historicos", f"{id_aluno}_exercicios.csv")
 
-        df_remover_por_valor = df[df['Nome'] != f'{aluno}']
-        df_remover_por_valor.to_csv(utils.writable_path("data", "students.csv"), index=False)
+    df = pd.read_csv(caminho_csv)
+    df_anotacoes = pd.read_csv(caminho_anotacoes)
 
-        df_remover_lembrete = df_anotacoes[df_anotacoes['ID'] != f'{id_aluno}']
-        df_remover_lembrete.to_csv(utils.writable_path("data", "notes.csv"), index=False)
+    df_remover_por_valor = df[df['ID'] != f'{id_aluno}']
+    df_remover_por_valor.to_csv(utils.writable_path("data", "students.csv"), index=False)
 
-        os.remove(caminho_aulas_aluno_csv)
-        os.remove(caminho_textos_aluno_csv)
-        os.remove(caminho_exercicios_aluno_csv)
+    df_remover_lembrete = df_anotacoes[df_anotacoes['ID'] != f'{id_aluno}']
+    df_remover_lembrete.to_csv(utils.writable_path("data", "notes.csv"), index=False)
 
-        print(f"\nSUCESSO! o aluno {aluno} foi removido com sucesso.")
+    os.remove(caminho_aulas_aluno_csv)
+    os.remove(caminho_textos_aluno_csv)
+    os.remove(caminho_exercicios_aluno_csv)
+
+    print(f"\nSUCESSO! o aluno {nome_aluno} foi removido com sucesso.")
 
 def pegar_id_por_nome(nome):
     df = pd.read_csv(caminho_csv)

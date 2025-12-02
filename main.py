@@ -30,6 +30,8 @@ def main_menu():
         elif option == 3:
             ui.menu_editar()
 
+            print("")
+            
             alterar_por_nome = ui.pegar_nome()
 
             chave, valor_atualizado = ui.inputs_editar()
