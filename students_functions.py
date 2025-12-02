@@ -71,7 +71,8 @@ def visualizar_alunos():
         table = [] 
 
         for linha in leitor_csv:
-            table.append([linha['ID'], linha['Nome'], linha['Status'], linha['Aulas'], linha['Dia do Pagamento'], linha['Nivel']]) 
+            id_encurtado = linha['ID'][:4] + "..."
+            table.append([id_encurtado, linha['Nome'], linha['Status'], linha['Aulas'], linha['Dia do Pagamento'], linha['Nivel']]) 
 
         print(tabulate(table, headers=headers, tablefmt="fancy_grid"))
 

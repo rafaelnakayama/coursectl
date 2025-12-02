@@ -59,9 +59,9 @@ def ler_anotacoes():
         table = [] 
 
         for linha in leitor_csv:
-            id_encurtado = linha['ID'][:6] + "..."
+            id_encurtado = linha['ID'][:4] + "..."
 
-            table.append([id_encurtado, linha['Nome'], linha['Lembrete']]) 
+            table.append([id_encurtado, linha['Nome'], linha['Lembrete']])
 
         print(tabulate(table, headers=headers, tablefmt="fancy_grid"))
 
@@ -109,7 +109,9 @@ def visualizar_material(tipo):      # Opcao 1 do menu materiais
         table = []
 
         for linha in leitor_csv:
-            table.append([linha['id'], linha['name']])
+            id_encurtado = linha['id'][:4] + "..."
+
+            table.append([id_encurtado, linha['name']])
 
         print(tabulate(table, headers=headers, tablefmt="fancy_grid"))
 
@@ -129,7 +131,10 @@ def visualizar_historico(id_param, tipo):   # Opcao 2 do menu materiais
         table = []
 
         for linha in leitor_csv:
-            table.append([linha['id'], linha['name']])
+
+            id_encurtado = linha['id'][:4] + "..."
+
+            table.append([id_encurtado, linha['name']])
 
         print(tabulate(table, headers=headers, tablefmt="fancy_grid"))
 
