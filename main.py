@@ -128,6 +128,12 @@ def main_menu():
 
         elif option == 6:
             print("\n\033[1;35mSaindo do programa...\033[1;35m")
+            
+            try:
+                api.atualizar_csv()
+            except Exception as e:
+                print(f"\n\033[1;31mNão foi possível atualizar os CSVs: {e}\033[0m")
+
             break
         else:
             print(f"\033[1;31mA Opção '{option}' não exite.\033[1;35m")
