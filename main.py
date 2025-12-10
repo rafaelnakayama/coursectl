@@ -1,7 +1,7 @@
 import students_functions as sf
 import ui_functions as ui
 import classes_functions as cf
-import api as googleapi
+import api
 
 def main_menu():
     sf.verificar_csv()
@@ -128,8 +128,6 @@ def main_menu():
 
         elif option == 6:
             print("\n\033[1;35mSaindo do programa...\033[1;35m")
-            service = googleapi.get_service()
-            googleapi.atualizar_csvs(service)
             break
         else:
             print(f"\033[1;31mA Opção '{option}' não exite.\033[1;35m")

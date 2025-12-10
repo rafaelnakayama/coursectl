@@ -1,6 +1,8 @@
 import os
 import pandas as pd
 import utils
+import threading
+import time
 
 from google.auth.transport.requests import Request  # Requiscoes http
 from google.oauth2.credentials import Credentials # Gerencia o token de Acesso
@@ -177,3 +179,14 @@ def atualizar_csvs(service):
 def get_service():
     credenciais = autenticar()
     return build('drive', 'v3', credentials=credenciais)
+
+def loop_atualizacao():
+    service = get_service()
+    while True:
+        try:
+            atualizar_csvs(service)
+        except Exception as e:
+            print("Erro ao atualizar CSVs:", e)
+        time.sleep(86400)  # 24 horas
+
+threading.Thread(target=loop_atualizacao, daemon=True).start()
