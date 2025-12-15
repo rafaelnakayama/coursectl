@@ -32,7 +32,7 @@ Once this information is downloaded, the program writes all data into local `.cs
 - And stores each student's history inside a `historicos` dic, where each individual has three files. Example:
 a student called Rafael will have a `(Rafael's ID)_exercises.csv`, `(Rafael's ID)_classes.csv` and `(Rafael's ID)_texts.csv`
 - If a new text is added to the course (Drive), for example, we can update our .csv to the "Newest `textos.csv`"
-version. When we select the option "6" of the main menu, the program closes and updates itself (if they exist).
+version. When we select the option "6" of the main menu, the program closes and updates itself (if there is something to update).
 
 Through the console interface, I can:
 
@@ -60,13 +60,15 @@ The project was written in **Python** and uses:
 - `Google Drive API (GCP)` – retrieving course metadata from the cloud  
 - `PyInstaller` – packaging into a standalone executable
 
+PyInstaller command to create the .exe: 
+
+pyinstaller main.py --name "Students Log" --onefile --console --icon "StudentsLog.ico" --add-data "data;data"
+
 No online database is required. After Drive syncing, everything runs locally.
 
 ---
 
 ## 📂 Project Structure (Simplified):
-
-PyInstaller command to run on terminal: pyinstaller main.py --name "Students Log" --onefile --console --icon "StudentsLog.ico" --add-data "data;data"
 
 ![alt text](structure.png)
 
