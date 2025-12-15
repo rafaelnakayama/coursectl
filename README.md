@@ -23,7 +23,7 @@ Inside the code, I use the **Google Drive API (via Google Cloud Platform)** to c
 - The names of exercises and other materials  
 - Their file IDs
 
-Once this information is downloaded, the program writes and updates all data into local `.csv` files. From that point onward:
+Once this information is downloaded, the program writes all data into local `.csv` files. From that point onward:
 
 - Every lesson is stored locally  
 - Every student in the system can be associated with those lessons  
@@ -31,6 +31,8 @@ Once this information is downloaded, the program writes and updates all data int
 - The system keeps a general information of all students progress in `students.csv` files
 - And stores each student's history inside a `historicos` dic, where each individual has three files. Example:
 a student called Rafael will have a `(Rafael's ID)_exercises.csv`, `(Rafael's ID)_classes.csv` and `(Rafael's ID)_texts.csv`
+- If a new text is added to the course (Drive), for example, we can update our .csv to the "Newest `textos.csv`"
+version. When we select the option "6" of the main menu, the program closes and updates itself (if they exist).
 
 Through the console interface, I can:
 
@@ -40,6 +42,7 @@ Through the console interface, I can:
 - Assign or remove lessons from a student  
 - Store personal reminders/notes for each student  
 - Review everything using formatted terminal tables
+- Stay up to date with my English Course data from Google Drive
 
 All data manipulation is local, no need to reopen Google Drive after initial sync.
 
@@ -54,7 +57,7 @@ The project was written in **Python** and uses:
 - `os` – file handling  
 - `uuid` – unique student IDs  
 - `tabulate` – formatted terminal tables  
-- Google Drive API (GCP) – retrieving course metadata from the cloud  
+- `Google Drive API (GCP)` – retrieving course metadata from the cloud  
 - `PyInstaller` – packaging into a standalone executable
 
 No online database is required. After Drive syncing, everything runs locally.
@@ -62,6 +65,8 @@ No online database is required. After Drive syncing, everything runs locally.
 ---
 
 ## 📂 Project Structure (Simplified):
+
+PyInstaller command to run on terminal: pyinstaller main.py --name "Students Log" --onefile --console --icon "StudentsLog.ico" --add-data "data;data"
 
 ![alt text](structure.png)
 

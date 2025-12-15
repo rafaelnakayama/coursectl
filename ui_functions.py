@@ -10,7 +10,7 @@ import utils
 
 # Pedi para o chat gpt gerar cores para serem inseridos nos prints
 CORES = {
-    "reset": "\033[0m",       # Reseta para cor padrão
+    "reset": "\033[0m",
     "preto": "\033[30m",
     "vermelho": "\033[31m",
     "verde": "\033[32m",
@@ -42,7 +42,7 @@ CORES = {
 
     # Laranja
     "BOLD": "\033[1m",
-    "ORANGE_256": "\033[38;5;208m",  # A common orange in 256-color palette
+    "ORANGE_256": "\033[38;5;208m",
 }
 
 def menu_materiais():
@@ -172,4 +172,3 @@ def inputs_editar():
         valor_atualizado = str(input(f"{CORES['verde']}Nível: {CORES['reset']}"))
 
     return chave, valor_atualizado
-
