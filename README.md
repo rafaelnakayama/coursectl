@@ -1,4 +1,4 @@
-# Students Log (Student Management Console System)
+# Students Log
 
 ## 📌 Overview
 
